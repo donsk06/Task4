@@ -1,0 +1,13 @@
+version: "1"
+services:
+  database:
+    image: mysql:5.7
+    volumes:
+        - ./scripts:./CREATE.sql
+
+  application:
+    image: spring-boot-image
+    build:
+      dockerfile: ./Dockerfile_part2
+    depends_on:
+    - database
